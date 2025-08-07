@@ -19,12 +19,11 @@ echo ║  [6] Utilitários                                                   ║
 echo ║  [7] Domínio                                                       ║
 echo ║  [8] Drivers                                                       ║
 echo ║  [9] Instalar Programas                                            ║
-echo ║  [10] Ativar Windows e Office                                      ║
 echo ║  [0] Sair                                                          ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p opcao=Digite sua opção: 
+set /p opcao=Digite sua opção:
 
 if "%opcao%"=="1" goto SISTEMA
 if "%opcao%"=="2" goto REDE
@@ -35,7 +34,6 @@ if "%opcao%"=="6" goto UTILITARIOS
 if "%opcao%"=="7" goto DOMINIO
 if "%opcao%"=="8" goto DRIVERS
 if "%opcao%"=="9" goto INSTALAR_PROGRAMAS
-if "%opcao%"=="10" goto ATIVAR_WINDOWS_OFFICE
 if "%opcao%"=="0" goto SAIR
 goto MAIN_MENU
 
@@ -57,7 +55,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p rede_opcao=Digite sua opção: 
+set /p rede_opcao=Digite sua opção:
 
 if "%rede_opcao%"=="1" goto DIAGNOSTICO_REDE
 if "%rede_opcao%"=="2" goto RESET_TCPIP
@@ -77,17 +75,17 @@ echo ║                    CONTROLE DE FIREWALL                           ║
 echo ╠════════════════════════════════════════════════════════════════════╣
 echo ║                                                                    ║
 echo ║  [1] Verificar Status do Firewall                                  ║
-echo ║  [2] Ativar Firewall (Todos os Perfis)                            ║
-echo ║  [3] Desativar Firewall (Todos os Perfis)                         ║
-echo ║  [4] Ativar Firewall Apenas Rede Pública                          ║
-echo ║  [5] Ativar Firewall Apenas Rede Privada                          ║
-echo ║  [6] Ativar Firewall Apenas Domínio                               ║
-echo ║  [7] Restaurar Configurações Padrão do Firewall                   ║
+echo ║  [2] Ativar Firewall (Todos os Perfis)                             ║
+echo ║  [3] Desativar Firewall (Todos os Perfis)                          ║
+echo ║  [4] Ativar Firewall Apenas Rede Pública                           ║
+echo ║  [5] Ativar Firewall Apenas Rede Privada                           ║
+echo ║  [6] Ativar Firewall Apenas Domínio                                ║
+echo ║  [7] Restaurar Configurações Padrão do Firewall                    ║
 echo ║  [0] Voltar ao Menu de Rede                                        ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p firewall_opcao=Digite sua opção: 
+set /p firewall_opcao=Digite sua opção:
 
 if "%firewall_opcao%"=="1" goto VERIFICAR_FIREWALL
 if "%firewall_opcao%"=="2" goto ATIVAR_FIREWALL_TODOS
@@ -106,14 +104,14 @@ echo ╔════════════════════════
 echo ║                  STATUS ATUAL DO FIREWALL                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Verificando status do Windows Defender Firewall...
+[cite_start]echo Verificando status do Windows Defender Firewall... [cite: 25]
 echo.
 netsh advfirewall show allprofiles state
 echo.
 echo ═══════════════════════════════════════════════════════════════════
 echo Informações detalhadas:
 echo.
-powershell.exe -Command "Get-NetFirewallProfile | Select-Object Name, Enabled | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-NetFirewallProfile | Select-Object Name, Enabled | Format-Table -AutoSize" [cite: 26]
 echo.
 pause
 goto MENU_FIREWALL
@@ -125,25 +123,25 @@ echo ╔════════════════════════
 echo ║              ATIVANDO FIREWALL (TODOS OS PERFIS)                  ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ATENÇÃO: Esta operação ativará o Firewall para todos os perfis de rede.
+[cite_start]echo ATENÇÃO: Esta operação ativará o Firewall para todos os perfis de rede. [cite: 28]
 echo.
-set /p confirma_ativar=Deseja continuar? (S/N): 
+set /p confirma_ativar=Deseja continuar? (S/N)[cite_start]: [cite: 28, 29]
 if /i "%confirma_ativar%" NEQ "S" goto MENU_FIREWALL
 
 echo.
 echo Ativando Firewall para todos os perfis...
 netsh advfirewall set allprofiles state on
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao ativar o Firewall.
+[cite_start]if errorlevel 1 ( [cite: 30]
+    [cite_start]echo ❌ Erro ao ativar o Firewall. [cite: 30]
 ) else (
-    echo ✅ Firewall ativado com sucesso em todos os perfis!
+    [cite_start]echo ✅ Firewall ativado com sucesso em todos os perfis! [cite: 30]
     echo.
-    echo Status atual:
+    [cite_start]echo Status atual: [cite: 30]
     netsh advfirewall show allprofiles state
 )
 echo.
-pause
+[cite_start]pause [cite: 31]
 goto MENU_FIREWALL
 
 :DESATIVAR_FIREWALL_TODOS
@@ -153,27 +151,27 @@ echo ╔════════════════════════
 echo ║             DESATIVANDO FIREWALL (TODOS OS PERFIS)                ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ⚠️  ATENÇÃO: Desativar o Firewall pode deixar seu sistema vulnerável!
-echo Esta operação desativará a proteção de rede em todos os perfis.
+[cite_start]echo ⚠️  ATENÇÃO: Desativar o Firewall pode deixar seu sistema vulnerável! [cite: 32]
+[cite_start]echo Esta operação desativará a proteção de rede em todos os perfis. [cite: 33]
 echo.
-set /p confirma_desativar=Tem certeza que deseja continuar? (S/N): 
+set /p confirma_desativar=Tem certeza que deseja continuar? (S/N)[cite_start]: [cite: 33, 34]
 if /i "%confirma_desativar%" NEQ "S" goto MENU_FIREWALL
 
 echo.
 echo Desativando Firewall para todos os perfis...
 netsh advfirewall set allprofiles state off
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao desativar o Firewall.
+[cite_start]if errorlevel 1 ( [cite: 35]
+    [cite_start]echo ❌ Erro ao desativar o Firewall. [cite: 35]
 ) else (
-    echo ✅ Firewall desativado em todos os perfis.
-    echo ⚠️  Lembre-se de reativar o Firewall quando necessário!
+    [cite_start]echo ✅ Firewall desativado em todos os perfis. [cite: 35]
+    [cite_start]echo ⚠️  Lembre-se de reativar o Firewall quando necessário! [cite: 35]
     echo.
-    echo Status atual:
+    [cite_start]echo Status atual: [cite: 35]
     netsh advfirewall show allprofiles state
 )
 echo.
-pause
+[cite_start]pause [cite: 36]
 goto MENU_FIREWALL
 
 :ATIVAR_FIREWALL_PUBLICO
@@ -183,16 +181,16 @@ echo ╔════════════════════════
 echo ║              ATIVANDO FIREWALL - REDE PÚBLICA                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Ativando Firewall apenas para redes públicas...
+[cite_start]echo Ativando Firewall apenas para redes públicas... [cite: 37]
 netsh advfirewall set publicprofile state on
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao ativar o Firewall para rede pública.
+[cite_start]if errorlevel 1 ( [cite: 38]
+    [cite_start]echo ❌ Erro ao ativar o Firewall para rede pública. [cite: 38]
 ) else (
-    echo ✅ Firewall ativado para redes públicas!
+    [cite_start]echo ✅ Firewall ativado para redes públicas! [cite: 38]
 )
 echo.
-pause
+[cite_start]pause [cite: 39]
 goto MENU_FIREWALL
 
 :ATIVAR_FIREWALL_PRIVADO
@@ -202,16 +200,16 @@ echo ╔════════════════════════
 echo ║              ATIVANDO FIREWALL - REDE PRIVADA                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Ativando Firewall apenas para redes privadas...
+[cite_start]echo Ativando Firewall apenas para redes privadas... [cite: 40]
 netsh advfirewall set privateprofile state on
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao ativar o Firewall para rede privada.
+[cite_start]if errorlevel 1 ( [cite: 41]
+    [cite_start]echo ❌ Erro ao ativar o Firewall para rede privada. [cite: 41]
 ) else (
-    echo ✅ Firewall ativado para redes privadas!
+    [cite_start]echo ✅ Firewall ativado para redes privadas! [cite: 41]
 )
 echo.
-pause
+[cite_start]pause [cite: 42]
 goto MENU_FIREWALL
 
 :ATIVAR_FIREWALL_DOMINIO
@@ -221,16 +219,16 @@ echo ╔════════════════════════
 echo ║               ATIVANDO FIREWALL - REDE DOMÍNIO                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Ativando Firewall apenas para redes de domínio...
+[cite_start]echo Ativando Firewall apenas para redes de domínio... [cite: 43]
 netsh advfirewall set domainprofile state on
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao ativar o Firewall para rede de domínio.
+[cite_start]if errorlevel 1 ( [cite: 44]
+    [cite_start]echo ❌ Erro ao ativar o Firewall para rede de domínio. [cite: 44]
 ) else (
-    echo ✅ Firewall ativado para redes de domínio!
+    [cite_start]echo ✅ Firewall ativado para redes de domínio! [cite: 44]
 )
 echo.
-pause
+[cite_start]pause [cite: 45]
 goto MENU_FIREWALL
 
 :RESTAURAR_FIREWALL
@@ -240,26 +238,26 @@ echo ╔════════════════════════
 echo ║            RESTAURANDO CONFIGURAÇÕES PADRÃO                       ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Esta operação irá restaurar todas as configurações do Firewall
+[cite_start]echo Esta operação irá restaurar todas as configurações do Firewall [cite: 46]
 echo para os valores padrão do Windows.
 echo.
-set /p confirma_restaurar=Deseja continuar? (S/N): 
+set /p confirma_restaurar=Deseja continuar? (S/N)[cite_start]: [cite: 47]
 if /i "%confirma_restaurar%" NEQ "S" goto MENU_FIREWALL
 
 echo.
 echo Restaurando configurações padrão do Firewall...
 netsh advfirewall reset
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao restaurar configurações do Firewall.
+[cite_start]if errorlevel 1 ( [cite: 48]
+    [cite_start]echo ❌ Erro ao restaurar configurações do Firewall. [cite: 48]
 ) else (
-    echo ✅ Configurações padrão do Firewall restauradas com sucesso!
+    [cite_start]echo ✅ Configurações padrão do Firewall restauradas com sucesso! [cite: 48]
     echo.
-    echo Status atual:
+    [cite_start]echo Status atual: [cite: 48]
     netsh advfirewall show allprofiles state
 )
 echo.
-pause
+[cite_start]pause [cite: 49]
 goto MENU_FIREWALL
 
 :VERIFICAR_INTERFACES
@@ -269,18 +267,18 @@ echo ╔════════════════════════
 echo ║            VERIFICANDO INTERFACES DE REDE ATIVAS                  ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Aguarde, coletando informações das interfaces de rede...
+[cite_start]echo Aguarde, coletando informações das interfaces de rede... [cite: 50]
 echo.
 
 :: Executa o comando PowerShell para verificar interfaces ativas e velocidade
-powershell.exe -Command "Get-CimInstance -ClassName Win32_NetworkAdapter | Where-Object { $_.NetEnabled -eq $true } | Select-Object Name, @{Name = 'Tipo de Conexão'; Expression = { $speed = $_.Speed / 1e6; switch ($speed) { 100 { 'Fast Ethernet (100 Mbps)' } 1000 { 'Gigabit Ethernet (1000 Mbps)' } 2500 { '2.5 Gigabit Ethernet (2500 Mbps)' } 10000 { '10 Gigabit Ethernet (10000 Mbps)' } default { \"$speed Mbps\" } } }} | Format-Table -Property @{ Label = 'Name'; Expression = { $_.Name }; Width = 50 }, @{ Label = 'Tipo de Conexão'; Expression = { $_.'Tipo de Conexão' }; Width = 30 }"
+[cite_start]powershell.exe -Command "Get-CimInstance -ClassName Win32_NetworkAdapter | Where-Object { $_.NetEnabled -eq $true } | Select-Object Name, @{Name = 'Tipo de Conexão'; Expression = { $speed = $_.Speed / 1e6; switch ($speed) { 100 { 'Fast Ethernet (100 Mbps)' } 1000 { 'Gigabit Ethernet (1000 Mbps)' } 2500 { '2.5 Gigabit Ethernet (2500 Mbps)' } 10000 { '10 Gigabit Ethernet (10000 Mbps)' } default { \"$speed Mbps\" } } }} | Format-Table -Property @{ Label = 'Name'; Expression = { $_.Name }; Width = 50 }, @{ Label = 'Tipo de Conexão'; Expression = { $_.'Tipo de Conexão' }; Width = 30 }" [cite: 50, 51]
 
 echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                    VERIFICAÇÃO CONCLUÍDA                          ║
-echo ╚════════════════════════════════════════════════════════════════════╝
+[cite_start]echo ╔════════════════════════════════════════════════════════════════════╗ [cite: 52]
+[cite_start]echo ║                    VERIFICAÇÃO CONCLUÍDA                          ║ [cite: 52]
+[cite_start]echo ╚════════════════════════════════════════════════════════════════════╝ [cite: 52]
 echo.
-pause
+[cite_start]pause [cite: 53]
 goto REDE
 
 :DIAGNOSTICO_REDE
@@ -290,7 +288,7 @@ echo ╔════════════════════════
 echo ║                    DIAGNÓSTICO DE REDE                            ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Executando diagnóstico de rede...
+[cite_start]echo Executando diagnóstico de rede... [cite: 54]
 netsh wlan show profiles
 ipconfig /all
 echo.
@@ -304,12 +302,12 @@ echo ╔════════════════════════
 echo ║                 RESETANDO CONFIGURAÇÕES TCP/IP                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Resetando configurações de rede...
+[cite_start]echo Resetando configurações de rede... [cite: 56]
 netsh int ip reset
 netsh winsock reset
 echo.
 echo Configurações resetadas. Reinicie o computador para aplicar as mudanças.
-pause
+[cite_start]pause [cite: 57]
 goto REDE
 
 :FLUSH_DNS
@@ -319,7 +317,7 @@ echo ╔════════════════════════
 echo ║                        LIMPANDO CACHE DNS                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Limpando cache DNS...
+[cite_start]echo Limpando cache DNS... [cite: 58]
 ipconfig /flushdns
 echo.
 echo Cache DNS limpo com sucesso!
@@ -333,7 +331,7 @@ echo ╔════════════════════════
 echo ║                   TESTE DE CONECTIVIDADE                          ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Testando conectividade...
+[cite_start]echo Testando conectividade... [cite: 60]
 ping google.com
 ping 8.8.8.8
 echo.
@@ -347,13 +345,13 @@ echo ╔════════════════════════
 echo ║                   INFORMAÇÕES DE REDE                             ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Coletando informações de rede...
+[cite_start]echo Coletando informações de rede... [cite: 61]
 ipconfig /all
 echo.
 echo ═══════════════════════════════════════════════════════════════════
 echo Informações de adaptadores de rede:
 echo.
-powershell.exe -Command "Get-NetAdapter | Select-Object Name, InterfaceDescription, LinkSpeed, Status | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-NetAdapter | Select-Object Name, InterfaceDescription, LinkSpeed, Status | Format-Table -AutoSize" [cite: 62]
 echo.
 pause
 goto REDE
@@ -366,7 +364,7 @@ echo ║                         MENU SISTEMA                              ║
 echo ╠════════════════════════════════════════════════════════════════════╣
 echo ║                                                                    ║
 echo ║  [1] Informações do Sistema                                        ║
-echo ║  [2] Analisar e Reparar Arquivos Essenciais (DISM)                 ║
+echo ║  [2] Analisar e Reparar Arquivos Essenciais (DISM)                  ║
 echo ║  [3] Verificar Integridade dos Arquivos (SFC)                      ║
 echo ║  [4] Verificar Disco (CHKDSK)                                      ║
 echo ║  [5] Informações de Hardware                                       ║
@@ -377,9 +375,9 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-if "%sistema_opcao%"=="2" goto DISM_SCAN
-if "%sistema_opcao%"=="8" goto MEMORIA
-set /p sistema_opcao=Digite sua opção: 
+[cite_start]if "%sistema_opcao%"=="2" goto DISM_SCAN [cite: 69]
+[cite_start]if "%sistema_opcao%"=="8" goto MEMORIA [cite: 69]
+set /p sistema_opcao=Digite sua opção:
 
 if "%sistema_opcao%"=="1" goto INFO_SISTEMA
 if "%sistema_opcao%"=="2" goto SFC_SCAN
@@ -397,7 +395,7 @@ echo ╔════════════════════════
 echo ║                   INFORMAÇÕES DO SISTEMA                          ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-systeminfo
+[cite_start]systeminfo [cite: 71]
 echo.
 pause
 goto SISTEMA
@@ -409,12 +407,12 @@ echo ╔════════════════════════
 echo ║              VERIFICAÇÃO DE INTEGRIDADE (SFC)                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Executando verificação de integridade dos arquivos do sistema...
+[cite_start]echo Executando verificação de integridade dos arquivos do sistema... [cite: 72]
 echo ATENÇÃO: Este processo pode demorar alguns minutos.
 echo.
 sfc /scannow
 echo.
-pause
+[cite_start]pause [cite: 73]
 goto SISTEMA
 
 :CHKDSK
@@ -424,12 +422,12 @@ echo ╔════════════════════════
 echo ║                    VERIFICAÇÃO DE DISCO                           ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Discos disponíveis:
-powershell.exe -Command "Get-WmiObject -Class Win32_LogicalDisk | Select-Object DeviceID, @{Name='Size(GB)';Expression={[math]::Round($_.Size/1GB,2)}}, @{Name='FreeSpace(GB)';Expression={[math]::Round($_.FreeSpace/1GB,2)}} | Format-Table -AutoSize"
+[cite_start]echo Discos disponíveis: [cite: 74]
+[cite_start]powershell.exe -Command "Get-WmiObject -Class Win32_LogicalDisk | Select-Object DeviceID, @{Name='Size(GB)';Expression={[math]::Round($_.Size/1GB,2)}}, @{Name='FreeSpace(GB)';Expression={[math]::Round($_.FreeSpace/1GB,2)}} | Format-Table -AutoSize" [cite: 74]
 echo.
-set /p drive=Digite a letra do drive para verificar (ex: C): 
+[cite_start]set /p drive=Digite a letra do drive para verificar (ex: C): [cite: 75]
 echo.
-echo Executando verificação do disco %drive%...
+[cite_start]echo Executando verificação do disco %drive%... [cite: 76]
 chkdsk %drive%: /f /r
 echo.
 pause
@@ -442,14 +440,14 @@ echo ╔════════════════════════
 echo ║                   INFORMAÇÕES DE HARDWARE                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Processador:
-powershell.exe -Command "Get-WmiObject -Class Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors | Format-Table -AutoSize"
+[cite_start]echo Processador: [cite: 78]
+[cite_start]powershell.exe -Command "Get-WmiObject -Class Win32_Processor | Select-Object Name, NumberOfCores, NumberOfLogicalProcessors | Format-Table -AutoSize" [cite: 78]
 echo.
-echo Memória RAM:
-powershell.exe -Command "Get-WmiObject -Class Win32_PhysicalMemory | Select-Object @{Name='Capacity(GB)';Expression={[math]::Round($_.Capacity/1GB,2)}}, Speed, Manufacturer | Format-Table -AutoSize"
+[cite_start]echo Memória RAM: [cite: 79]
+[cite_start]powershell.exe -Command "Get-WmiObject -Class Win32_PhysicalMemory | Select-Object @{Name='Capacity(GB)';Expression={[math]::Round($_.Capacity/1GB,2)}}, Speed, Manufacturer | Format-Table -AutoSize" [cite: 79]
 echo.
-echo Placa de Vídeo:
-powershell.exe -Command "Get-WmiObject -Class Win32_VideoController | Select-Object Name, @{Name='RAM(MB)';Expression={[math]::Round($_.AdapterRAM/1MB,0)}} | Format-Table -AutoSize"
+[cite_start]echo Placa de Vídeo: [cite: 80]
+[cite_start]powershell.exe -Command "Get-WmiObject -Class Win32_VideoController | Select-Object Name, @{Name='RAM(MB)';Expression={[math]::Round($_.AdapterRAM/1MB,0)}} | Format-Table -AutoSize" [cite: 80]
 echo.
 pause
 goto SISTEMA
@@ -461,7 +459,7 @@ echo ╔════════════════════════
 echo ║                   ABRINDO GERENCIADOR DE TAREFAS                  ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-taskmgr
+[cite_start]taskmgr [cite: 82]
 goto SISTEMA
 
 :SERVICOS
@@ -471,7 +469,7 @@ echo ╔════════════════════════
 echo ║                   ABRINDO SERVIÇOS DO WINDOWS                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-services.msc
+[cite_start]services.msc [cite: 83]
 goto SISTEMA
 
 :IMPRESSORAS
@@ -494,7 +492,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p impressora_opcao=Digite sua opção: 
+[cite_start]set /p impressora_opcao=Digite sua opção: [cite: 90]
 
 if "%impressora_opcao%"=="1" goto LISTAR_IMPRESSORAS
 if "%impressora_opcao%"=="2" goto STATUS_IMPRESSORAS
@@ -515,7 +513,7 @@ echo ╔════════════════════════
 echo ║                 IMPRESSORAS INSTALADAS                            ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "Get-Printer | Select-Object Name, DriverName, PortName | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-Printer | Select-Object Name, DriverName, PortName | Format-Table -AutoSize" [cite: 92]
 echo.
 pause
 goto IMPRESSORAS
@@ -527,7 +525,7 @@ echo ╔════════════════════════
 echo ║                 STATUS DAS IMPRESSORAS                            ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "Get-Printer | Select-Object Name, PrinterStatus, JobCount | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-Printer | Select-Object Name, PrinterStatus, JobCount | Format-Table -AutoSize" [cite: 94]
 echo.
 pause
 goto IMPRESSORAS
@@ -539,13 +537,13 @@ echo ╔════════════════════════
 echo ║                 LIMPANDO FILA DE IMPRESSÃO                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Parando serviço de spooler...
+[cite_start]echo Parando serviço de spooler... [cite: 96]
 net stop spooler
 echo.
-echo Limpando arquivos da fila...
+[cite_start]echo Limpando arquivos da fila... [cite: 96]
 del /Q /F %systemroot%\system32\spool\printers\*
 echo.
-echo Reiniciando serviço de spooler...
+[cite_start]echo Reiniciando serviço de spooler... [cite: 97]
 net start spooler
 echo.
 echo Fila de impressão limpa com sucesso!
@@ -559,7 +557,7 @@ echo ╔════════════════════════
 echo ║               GERENCIADOR DE DISPOSITIVOS                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Abrindo Gerenciador de Dispositivos para reinstalar drivers...
+[cite_start]echo Abrindo Gerenciador de Dispositivos para reinstalar drivers... [cite: 99]
 devmgmt.msc
 goto IMPRESSORAS
 
@@ -570,7 +568,7 @@ echo ╔════════════════════════
 echo ║               CONFIGURAÇÕES DE IMPRESSORA                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Abrindo Painel de Controle - Impressoras...
+[cite_start]echo Abrindo Painel de Controle - Impressoras... [cite: 100]
 control printers
 goto IMPRESSORAS
 
@@ -581,20 +579,20 @@ echo ╔════════════════════════
 echo ║                    TESTE DE IMPRESSÃO                             ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Verificando impressoras disponíveis...
-powershell.exe -Command "Get-Printer | Select-Object Name, Default | Format-Table -AutoSize"
+[cite_start]echo Verificando impressoras disponíveis... [cite: 101]
+[cite_start]powershell.exe -Command "Get-Printer | Select-Object Name, Default | Format-Table -AutoSize" [cite: 101]
 echo.
-echo Escolha uma impressora para testar:
-powershell.exe -Command "$printers = Get-Printer; for($i=0; $i -lt $printers.Count; $i++) { Write-Host \"[$($i+1)] $($printers[$i].Name)\" }"
+[cite_start]echo Escolha uma impressora para testar: [cite: 102]
+[cite_start]powershell.exe -Command "$printers = Get-Printer; for($i=0; $i -lt $printers.Count; $i++) { Write-Host \"[$($i+1)] $($printers[$i].Name)\" }" [cite: 102]
 echo [0] Voltar
 echo.
-set /p printer_choice=Digite o número da impressora: 
+[cite_start]set /p printer_choice=Digite o número da impressora: [cite: 103]
 
 if "%printer_choice%"=="0" goto IMPRESSORAS
 
 echo.
-echo Enviando página de teste...
-powershell.exe -Command "$printers = Get-Printer; if (%printer_choice% -le $printers.Count -and %printer_choice% -gt 0) { $selectedPrinter = $printers[%printer_choice%-1].Name; Write-Host 'Enviando teste para:' $selectedPrinter; Add-Type -AssemblyName System.Drawing; Add-Type -AssemblyName System.Windows.Forms; $doc = New-Object System.Drawing.Printing.PrintDocument; $doc.PrinterSettings.PrinterName = $selectedPrinter; $doc.DocumentName = 'Página de Teste'; $doc.add_PrintPage({ param($sender, $e) $font = New-Object System.Drawing.Font('Arial', 12); $brush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::Black); $e.Graphics.DrawString('=== PÁGINA DE TESTE ===', $font, $brush, 100, 100); $e.Graphics.DrawString('Impressora: ' + $selectedPrinter, $font, $brush, 100, 150); $e.Graphics.DrawString('Data/Hora: ' + (Get-Date), $font, $brush, 100, 200); $e.Graphics.DrawString('Sistema: ' + $env:COMPUTERNAME, $font, $brush, 100, 250); $e.Graphics.DrawString('Usuário: ' + $env:USERNAME, $font, $brush, 100, 300); $e.Graphics.DrawString('Teste realizado com sucesso!', $font, $brush, 100, 350); }); try { $doc.Print(); Write-Host 'Página de teste enviada com sucesso!' } catch { Write-Host 'Erro ao imprimir:' $_.Exception.Message } } else { Write-Host 'Opção inválida!' }"
+[cite_start]echo Enviando página de teste... [cite: 104]
+powershell.exe -Command "$printers = Get-Printer; if (%printer_choice% -le $printers.Count -and %printer_choice% -gt 0) { $selectedPrinter = $printers[%printer_choice%-1].Name; Write-Host 'Enviando teste para:' $selectedPrinter; Add-Type -AssemblyName System.Drawing; Add-Type -AssemblyName System.Windows.Forms; $doc = New-Object System.Drawing.Printing.PrintDocument; $doc.PrinterSettings.PrinterName = $selectedPrinter; $doc.DocumentName = 'Página de Teste'; $doc.add_PrintPage({ param($sender, $e) $font = New-Object System.Drawing.Font('Arial', 12); $brush = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::Black); $e.Graphics.DrawString('=== PÁGINA DE TESTE ===', $font, $brush, 100, 100); $e.Graphics.DrawString('Impressora: ' + $selectedPrinter, $font, $brush, 100, 150); $e.Graphics.DrawString('Data/Hora: ' + (Get-Date), $font, $brush, 100, 200); $e.Graphics.DrawString('Sistema: ' + $env:COMPUTERNAME, $font, $brush, 100, 250); $e.Graphics.DrawString('Usuário: ' + $env:USERNAME, $font, $brush, 100, 300); $e.Graphics.DrawString('Teste realizado com sucesso!', $font, $brush, 100, 350); }); try { $doc.Print(); Write-Host 'Página de teste enviada com sucesso!' } catch { Write-Host 'Erro ao imprimir:' $_.Exception.Message } } else { Write-Host 'Opção inválida!' [cite_start]}" [cite: 104, 105, 106, 107]
 echo.
 pause
 goto IMPRESSORAS
@@ -612,22 +610,22 @@ echo.
 echo ATENÇÃO: Esta correção modificará o registro do Windows.
 echo Certifique-se de ter privilégios de administrador.
 echo.
-set /p confirma_11b=Deseja continuar com a correção? (S/N): 
+set /p confirma_11b=Deseja continuar com a correção? (S/N):
 if /i "%confirma_11b%" NEQ "S" goto IMPRESSORAS
 
 echo.
-echo Aplicando correção para erro 0x0000011b...
+[cite_start]echo Aplicando correção para erro 0x0000011b... [cite: 108]
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Print" /v RpcAuthnLevelPrivacyEnabled /t REG_DWORD /d 0 /f
 echo.
 if errorlevel 1 (
     echo ❌ Erro ao aplicar a correção. Verifique se está executando como Administrador.
 ) else (
-    echo ✅ Erro 0x0000011b corrigido com sucesso!
+    [cite_start]echo ✅ Erro 0x0000011b corrigido com sucesso! [cite: 109]
     echo.
-    echo IMPORTANTE: Reinicie o computador ou o serviço de spooler para aplicar as mudanças.
+    [cite_start]echo IMPORTANTE: Reinicie o computador ou o serviço de spooler para aplicar as mudanças. [cite: 109]
     echo.
-    set /p reinicia_spooler=Deseja reiniciar o serviço de spooler agora? (S/N): 
-    if /i "!reinicia_spooler!" == "S" (
+    set /p reinicia_spooler=Deseja reiniciar o serviço de spooler agora? (S/N)[cite_start]: [cite: 110]
+    if /i "!reinicia_spooler!" [cite_start]== "S" ( [cite: 110, 111]
         echo.
         echo Reiniciando serviço de spooler...
         net stop spooler
@@ -636,7 +634,7 @@ if errorlevel 1 (
     )
 )
 echo.
-pause
+[cite_start]pause [cite: 112]
 goto IMPRESSORAS
 
 :ERRO0BCB
@@ -646,37 +644,37 @@ echo ╔════════════════════════
 echo ║                   CORRIGIR ERRO 0x00000bcb                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Este erro ocorre quando há restrições de instalação de drivers de impressora
-echo para usuários não-administradores.
+[cite_start]echo Este erro ocorre quando há restrições de instalação de drivers de impressora [cite: 113]
+[cite_start]echo para usuários não-administradores. [cite: 113]
 echo.
-echo ATENÇÃO: Esta correção modificará as políticas do sistema.
+[cite_start]echo ATENÇÃO: Esta correção modificará as políticas do sistema. [cite: 114]
 echo Certifique-se de ter privilégios de administrador.
 echo.
-set /p confirma_bcb=Deseja continuar com a correção? (S/N): 
+set /p confirma_bcb=Deseja continuar com a correção? (S/N)[cite_start]: [cite: 115]
 if /i "%confirma_bcb%" NEQ "S" goto IMPRESSORAS
 
 echo.
-echo Aplicando correção para erro 0x00000bcb...
+[cite_start]echo Aplicando correção para erro 0x00000bcb... [cite: 116]
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint" /v RestrictDriverInstallationToAdministrators /t REG_DWORD /d 0 /f
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao aplicar a correção. Verifique se está executando como Administrador.
+[cite_start]if errorlevel 1 ( [cite: 117]
+    echo ❌ Erro ao aplicar a correção. [cite_start]Verifique se está executando como Administrador. [cite: 117]
 ) else (
-    echo ✅ Erro 0x00000bcb corrigido com sucesso!
+    [cite_start]echo ✅ Erro 0x00000bcb corrigido com sucesso! [cite: 117]
     echo.
     echo IMPORTANTE: Reinicie o computador para aplicar completamente as mudanças.
     echo.
-    set /p reinicia_bcb=Deseja reiniciar o computador agora? (S/N): 
+    set /p reinicia_bcb=Deseja reiniciar o computador agora? (S/N):
     if /i "!reinicia_bcb!" == "S" (
         echo.
         echo Reiniciando o computador em 10 segundos...
-        echo Pressione Ctrl+C para cancelar.
+        [cite_start]echo Pressione Ctrl+C para cancelar. [cite: 118]
         timeout /t 10
         shutdown /r /t 0
     )
 )
 echo.
-pause
+[cite_start]pause [cite: 119]
 goto IMPRESSORAS
 
 :ERRO709
@@ -686,37 +684,37 @@ echo ╔════════════════════════
 echo ║                   CORRIGIR ERRO 0x00000709                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Este erro ocorre em problemas de comunicação RPC com impressoras em rede.
-echo A correção força o uso do protocolo Named Pipe para RPC.
+[cite_start]echo Este erro ocorre em problemas de comunicação RPC com impressoras em rede. [cite: 120]
+[cite_start]echo A correção força o uso do protocolo Named Pipe para RPC. [cite: 121]
 echo.
-echo ATENÇÃO: Esta correção modificará as configurações de RPC do sistema.
+[cite_start]echo ATENÇÃO: Esta correção modificará as configurações de RPC do sistema. [cite: 122]
 echo Certifique-se de ter privilégios de administrador.
 echo.
-set /p confirma_709=Deseja continuar com a correção? (S/N): 
+set /p confirma_709=Deseja continuar com a correção? (S/N)[cite_start]: [cite: 123]
 if /i "%confirma_709%" NEQ "S" goto IMPRESSORAS
 
 echo.
-echo Aplicando correção para erro 0x00000709...
+[cite_start]echo Aplicando correção para erro 0x00000709... [cite: 124]
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC" /v RpcUseNamedPipeProtocol /t REG_DWORD /d 1 /f
 echo.
-if errorlevel 1 (
-    echo ❌ Erro ao aplicar a correção. Verifique se está executando como Administrador.
+[cite_start]if errorlevel 1 ( [cite: 125]
+    echo ❌ Erro ao aplicar a correção. [cite_start]Verifique se está executando como Administrador. [cite: 125]
 ) else (
-    echo ✅ Erro 0x00000709 corrigido com sucesso!
+    [cite_start]echo ✅ Erro 0x00000709 corrigido com sucesso! [cite: 125]
     echo.
     echo IMPORTANTE: Reinicie o computador ou o serviço de spooler para aplicar as mudanças.
     echo.
-    set /p reinicia_709=Deseja reiniciar o serviço de spooler agora? (S/N): 
+    set /p reinicia_709=Deseja reiniciar o serviço de spooler agora? (S/N):
     if /i "!reinicia_709!" == "S" (
         echo.
         echo Reiniciando serviço de spooler...
-        net stop spooler
+        [cite_start]net stop spooler [cite: 126]
         net start spooler
         echo ✅ Serviço de spooler reiniciado.
     )
 )
 echo.
-pause
+[cite_start]pause [cite: 127]
 goto IMPRESSORAS
 
 :LIMPEZA
@@ -736,7 +734,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p limpeza_opcao=Digite sua opção: 
+set /p limpeza_opcao=Digite sua opção:
 
 if "%limpeza_opcao%"=="1" goto DISK_CLEANUP
 if "%limpeza_opcao%"=="2" goto LIMPAR_TEMP
@@ -754,7 +752,7 @@ echo ╔════════════════════════
 echo ║                    LIMPEZA DE DISCO                               ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Abrindo ferramenta de Limpeza de Disco...
+[cite_start]echo Abrindo ferramenta de Limpeza de Disco... [cite: 134]
 cleanmgr
 goto LIMPEZA
 
@@ -765,13 +763,13 @@ echo ╔════════════════════════
 echo ║               LIMPANDO ARQUIVOS TEMPORÁRIOS                       ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Removendo arquivos temporários do usuário...
+[cite_start]echo Removendo arquivos temporários do usuário... [cite: 135]
 del /s /q %temp%\*.*
 echo.
-echo Removendo arquivos temporários do Windows...
+[cite_start]echo Removendo arquivos temporários do Windows... [cite: 135]
 del /s /q %windir%\temp\*.*
 echo.
-echo Limpeza de arquivos temporários concluída!
+[cite_start]echo Limpeza de arquivos temporários concluída! [cite: 136]
 pause
 goto LIMPEZA
 
@@ -782,7 +780,7 @@ echo ╔════════════════════════
 echo ║                   LIMPANDO CACHE DNS                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-ipconfig /flushdns
+[cite_start]ipconfig /flushdns [cite: 137]
 echo.
 echo Cache DNS limpo com sucesso!
 pause
@@ -795,16 +793,16 @@ echo ╔════════════════════════
 echo ║               LIMPEZA DE NAVEGADORES                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Limpando cache do Chrome...
+[cite_start]echo Limpando cache do Chrome... [cite: 139]
 taskkill /f /im chrome.exe 2>nul
 rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache" 2>nul
 echo.
-echo Limpando cache do Edge...
+[cite_start]echo Limpando cache do Edge... [cite: 140]
 taskkill /f /im msedge.exe 2>nul
 rd /s /q "%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache" 2>nul
 echo.
 echo Limpeza de navegadores concluída!
-pause
+[cite_start]pause [cite: 141]
 goto LIMPEZA
 
 :ESVAZIAR_LIXEIRA
@@ -814,7 +812,7 @@ echo ╔════════════════════════
 echo ║                   ESVAZIANDO LIXEIRA                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "Clear-RecycleBin -Force"
+[cite_start]powershell.exe -Command "Clear-RecycleBin -Force" [cite: 142]
 echo.
 echo Lixeira esvaziada com sucesso!
 pause
@@ -827,25 +825,25 @@ echo ╔════════════════════════
 echo ║                   LIMPEZA COMPLETA                                ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Executando limpeza completa do sistema...
+[cite_start]echo Executando limpeza completa do sistema... [cite: 144]
 echo.
-echo [1/5] Limpando arquivos temporários...
+[cite_start]echo [1/5] Limpando arquivos temporários... [cite: 144]
 del /s /q %temp%\*.* 2>nul
 del /s /q %windir%\temp\*.* 2>nul
 echo.
-echo [2/5] Limpando cache DNS...
+[cite_start]echo [2/5] Limpando cache DNS... [cite: 145]
 ipconfig /flushdns
 echo.
-echo [3/5] Esvaziando lixeira...
+[cite_start]echo [3/5] Esvaziando lixeira... [cite: 145]
 powershell.exe -Command "Clear-RecycleBin -Force" 2>nul
 echo.
-echo [4/5] Limpando cache de navegadores...
+[cite_start]echo [4/5] Limpando cache de navegadores... [cite: 146]
 taskkill /f /im chrome.exe 2>nul
 taskkill /f /im msedge.exe 2>nul
 rd /s /q "%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache" 2>nul
 rd /s /q "%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\Cache" 2>nul
 echo.
-echo [5/5] Executando limpeza de disco...
+[cite_start]echo [5/5] Executando limpeza de disco... [cite: 147]
 cleanmgr /sagerun:1
 echo.
 echo Limpeza completa finalizada!
@@ -869,7 +867,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p util_opcao=Digite sua opção: 
+[cite_start]set /p util_opcao=Digite sua opção: [cite: 153]
 
 if "%util_opcao%"=="1" goto REGEDIT
 if "%util_opcao%"=="2" goto MSCONFIG
@@ -887,7 +885,7 @@ echo ╔════════════════════════
 echo ║                 ABRINDO EDITOR DO REGISTRO                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ATENÇÃO: Seja cuidadoso ao editar o registro!
+[cite_start]echo ATENÇÃO: Seja cuidadoso ao editar o registro! [cite: 155]
 pause
 regedit
 goto UTILITARIOS
@@ -899,7 +897,7 @@ echo ╔════════════════════════
 echo ║             ABRINDO CONFIGURAÇÕES DO SISTEMA                      ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-msconfig
+[cite_start]msconfig [cite: 157]
 goto UTILITARIOS
 
 :MONITOR_RECURSOS
@@ -909,7 +907,7 @@ echo ╔════════════════════════
 echo ║                 ABRINDO MONITOR DE RECURSOS                       ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-resmon
+[cite_start]resmon [cite: 158]
 goto UTILITARIOS
 
 :MSINFO32
@@ -919,7 +917,7 @@ echo ╔════════════════════════
 echo ║               ABRINDO INFORMAÇÕES DO SISTEMA                      ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-msinfo32
+[cite_start]msinfo32 [cite: 159]
 goto UTILITARIOS
 
 :CMD_ADMIN
@@ -929,7 +927,7 @@ echo ╔════════════════════════
 echo ║            ABRINDO PROMPT DE COMANDO COMO ADMIN                   ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "Start-Process cmd -Verb runAs"
+[cite_start]powershell.exe -Command "Start-Process cmd -Verb runAs" [cite: 160]
 goto UTILITARIOS
 
 :DOMINIO
@@ -947,7 +945,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p dominio_opcao=Digite sua opção: 
+[cite_start]set /p dominio_opcao=Digite sua opção: [cite: 165]
 
 if "%dominio_opcao%"=="1" goto INGRESSAR_DOMINIO
 if "%dominio_opcao%"=="2" goto STATUS_DOMINIO
@@ -963,45 +961,45 @@ echo ╔════════════════════════
 echo ║                      INGRESSAR NO DOMÍNIO                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Escolha o domínio para ingressar:
+[cite_start]echo Escolha o domínio para ingressar: [cite: 167]
 echo.
 echo ╔════════════════════════════════════════════════════════════════════╗
 echo ║                                                                    ║
-echo ║  [1] Iketani                                                       ║
-echo ║  [2] Labsi                                                         ║
-echo ║  [3] Premazon                                                      ║
-echo ║  [4] Densimagen                                                    ║
+echo ║  [1] Dominio A                                                     ║
+echo ║  [2] Dominio B                                                     ║
+echo ║  [3] Dominio C                                                     ║
+echo ║  [4] Dominio D                                                     ║
 echo ║  [0] Voltar                                                        ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p dominio_escolha=Digite sua opção: 
+[cite_start]set /p dominio_escolha=Digite sua opção: [cite: 172]
 
-if "%dominio_escolha%"=="1" goto INGRESSAR_IKETANI
-if "%dominio_escolha%"=="2" goto INGRESSAR_LABSI
-if "%dominio_escolha%"=="3" goto INGRESSAR_PREMAZON
-if "%dominio_escolha%"=="4" goto INGRESSAR_DENSIMAGEN
+if "%dominio_escolha%"=="1" goto INGRESSAR_DOMINIO_A
+if "%dominio_escolha%"=="2" goto INGRESSAR_DOMINIO_B
+if "%dominio_escolha%"=="3" goto INGRESSAR_DOMINIO_C
+if "%dominio_escolha%"=="4" goto INGRESSAR_DOMINIO_D
 if "%dominio_escolha%"=="0" goto DOMINIO
 goto INGRESSAR_DOMINIO
 
-:INGRESSAR_IKETANI
-set "DOMAIN_NAME=iketani.bel"
-set "OU_PATH=OU=Computadores,DC=iketani,DC=bel"
+:INGRESSAR_DOMINIO_A
+set "DOMAIN_NAME=dominioA.local"
+set "OU_PATH=OU=Computadores,DC=dominioA,DC=local"
 goto EXECUTAR_INGRESSO
 
-:INGRESSAR_LABSI
-set "DOMAIN_NAME=labsi.bel"
-set "OU_PATH=OU=Computadores,DC=labsi,DC=bel"
+:INGRESSAR_DOMINIO_B
+set "DOMAIN_NAME=dominioB.local"
+set "OU_PATH=OU=Computadores,DC=dominioB,DC=local"
 goto EXECUTAR_INGRESSO
 
-:INGRESSAR_PREMAZON
-set "DOMAIN_NAME=premazon.bel"
-set "OU_PATH=OU=Computadores,DC=premazon,DC=bel"
+:INGRESSAR_DOMINIO_C
+set "DOMAIN_NAME=dominioC.local"
+set "OU_PATH=OU=Computadores,DC=dominioC,DC=local"
 goto EXECUTAR_INGRESSO
 
-:INGRESSAR_DENSIMAGEN
-set "DOMAIN_NAME=densimagen.bel"
-set "OU_PATH=OU=Computadores,DC=densimagen,DC=bel"
+:INGRESSAR_DOMINIO_D
+set "DOMAIN_NAME=dominioD.local"
+set "OU_PATH=OU=Computadores,DC=dominioD,DC=local"
 goto EXECUTAR_INGRESSO
 
 :EXECUTAR_INGRESSO
@@ -1011,20 +1009,19 @@ echo ╔════════════════════════
 echo ║                      INGRESSAR NO DOMÍNIO                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ATENÇÃO: Esta operação irá reiniciar o computador após o ingresso!
+[cite_start]echo ATENÇÃO: Esta operação irá reiniciar o computador após o ingresso! [cite: 174]
 echo.
-echo Configurações selecionadas:
+[cite_start]echo Configurações selecionadas: [cite: 175]
 echo - Domínio: %DOMAIN_NAME%
 echo - OU: %OU_PATH%
 echo.
-set /p confirma=Deseja continuar? (S/N): 
+set /p confirma=Deseja continuar? (S/N)[cite_start]: [cite: 175, 176]
 if /i "%confirma%" NEQ "S" goto DOMINIO
 
 echo.
 echo Iniciando processo de ingresso no domínio %DOMAIN_NAME%...
 echo.
-
-powershell.exe -Command "& { $DomainName = '%DOMAIN_NAME%'; $OUPath = '%OU_PATH%'; Write-Host '==========================' -ForegroundColor Cyan; Write-Host '     INGRESSAR DOMÍNIO' -ForegroundColor Cyan; Write-Host '==========================' -ForegroundColor Cyan; Write-Host; $Credential = Get-Credential -Message \"Digite as credenciais de um usuário com permissão para ingressar no domínio $DomainName\"; if ($Credential -eq $null) { Write-Host '❌ Operação cancelada pelo usuário.' -ForegroundColor Red; return }; $ComputerSystem = Get-WmiObject Win32_ComputerSystem; if ($ComputerSystem.PartOfDomain) { Write-Host \"💡 Este computador já faz parte do domínio: $($ComputerSystem.Domain)\" -ForegroundColor Yellow; return }; try { if ($OUPath -ne '') { Add-Computer -DomainName $DomainName -Credential $Credential -OUPath $OUPath -ErrorAction Stop } else { Add-Computer -DomainName $DomainName -Credential $Credential -ErrorAction Stop }; Write-Host '✅ Computador adicionado ao domínio com sucesso!' -ForegroundColor Green; Write-Host; Write-Host '🔄 O computador será reiniciado em 10 segundos...' -ForegroundColor Yellow; Start-Sleep -Seconds 10; Restart-Computer -Force } catch { Write-Host \"❌ Erro ao ingressar no domínio: $_\" -ForegroundColor Red; Write-Host; Write-Host 'Pressione qualquer tecla para continuar...'; Read-Host } }"
+powershell.exe -Command "& { $DomainName = '%DOMAIN_NAME%'; $OUPath = '%OU_PATH%'; Write-Host '==========================' -ForegroundColor Cyan; Write-Host '     INGRESSAR DOMÍNIO' -ForegroundColor Cyan; Write-Host '==========================' -ForegroundColor Cyan; Write-Host; $Credential = Get-Credential -Message \"Digite as credenciais de um usuário com permissão para ingressar no domínio $DomainName\"; if ($Credential -eq $null) { Write-Host '❌ Operação cancelada pelo usuário.' -ForegroundColor Red; return }; $ComputerSystem = Get-WmiObject Win32_ComputerSystem; if ($ComputerSystem.PartOfDomain) { Write-Host \"💡 Este computador já faz parte do domínio: $($ComputerSystem.Domain)\" -ForegroundColor Yellow; return }; try { if ($OUPath -ne '') { Add-Computer -DomainName $DomainName -Credential $Credential -OUPath $OUPath -ErrorAction Stop } else { Add-Computer -DomainName $DomainName -Credential $Credential -ErrorAction Stop }; Write-Host '✅ Computador adicionado ao domínio com sucesso!' [cite_start]-ForegroundColor Green; Write-Host; Write-Host '🔄 O computador será reiniciado em 10 segundos...' -ForegroundColor Yellow; Start-Sleep -Seconds 10; Restart-Computer -Force } catch { Write-Host \"❌ Erro ao ingressar no domínio: $_\" -ForegroundColor Red; Write-Host; Write-Host 'Pressione qualquer tecla para continuar...'; Read-Host } }" [cite: 177, 178, 179]
 
 pause
 goto DOMINIO
@@ -1036,9 +1033,9 @@ echo ╔════════════════════════
 echo ║                    STATUS DO DOMÍNIO                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; Write-Host 'Nome do Computador:' $ComputerSystem.Name -ForegroundColor Green; Write-Host 'Workgroup/Domínio:' $ComputerSystem.Workgroup -ForegroundColor Green; if ($ComputerSystem.PartOfDomain) { Write-Host '✅ Status: Membro do Domínio' -ForegroundColor Green; Write-Host 'Domínio:' $ComputerSystem.Domain -ForegroundColor Green; try { $Domain = Get-WmiObject -Class Win32_NTDomain; Write-Host 'Controlador de Domínio:' $Domain.DomainControllerName -ForegroundColor Green } catch { Write-Host 'Não foi possível obter informações do DC' -ForegroundColor Yellow } } else { Write-Host '⚠️  Status: Não é membro de domínio (Workgroup)' -ForegroundColor Yellow } }"
+[cite_start]powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; Write-Host 'Nome do Computador:' $ComputerSystem.Name -ForegroundColor Green; Write-Host 'Workgroup/Domínio:' $ComputerSystem.Workgroup -ForegroundColor Green; if ($ComputerSystem.PartOfDomain) { Write-Host '✅ Status: Membro do Domínio' -ForegroundColor Green; Write-Host 'Domínio:' $ComputerSystem.Domain -ForegroundColor Green; try { $Domain = Get-WmiObject -Class Win32_NTDomain; Write-Host 'Controlador de Domínio:' $Domain.DomainControllerName -ForegroundColor Green } catch { Write-Host 'Não foi possível obter informações do DC' -ForegroundColor Yellow } } else { Write-Host '⚠️  Status: Não é membro de domínio (Workgroup)' -ForegroundColor Yellow } }" [cite: 181]
 echo.
-pause
+[cite_start]pause [cite: 182]
 goto DOMINIO
 
 :SAIR_DOMINIO
@@ -1048,14 +1045,14 @@ echo ╔════════════════════════
 echo ║                       SAIR DO DOMÍNIO                             ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ATENÇÃO: Esta operação irá remover o computador do domínio!
+[cite_start]echo ATENÇÃO: Esta operação irá remover o computador do domínio! [cite: 183]
 echo O computador será reiniciado após a operação.
 echo.
-set /p confirma_saida=Deseja realmente sair do domínio? (S/N): 
+set /p confirma_saida=Deseja realmente sair do domínio? (S/N)[cite_start]: [cite: 184]
 if /i "%confirma_saida%" NEQ "S" goto DOMINIO
 
 echo.
-powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; if (-not $ComputerSystem.PartOfDomain) { Write-Host '💡 Este computador não está em um domínio.' -ForegroundColor Yellow; return }; Write-Host 'Removendo do domínio:' $ComputerSystem.Domain -ForegroundColor Yellow; $Credential = Get-Credential -Message 'Digite as credenciais de um usuário com permissão para remover computadores do domínio'; if ($Credential -eq $null) { Write-Host '❌ Operação cancelada pelo usuário.' -ForegroundColor Red; return }; try { Remove-Computer -Credential $Credential -PassThru -Verbose -Restart -Force } catch { Write-Host \"❌ Erro ao sair do domínio: $_\" -ForegroundColor Red } }"
+powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; if (-not $ComputerSystem.PartOfDomain) { Write-Host '💡 Este computador não está em um domínio.' -ForegroundColor Yellow; return }; Write-Host 'Removendo do domínio:' $ComputerSystem.Domain -ForegroundColor Yellow; $Credential = Get-Credential -Message 'Digite as credenciais de um usuário com permissão para remover computadores do domínio'; if ($Credential -eq $null) { Write-Host '❌ Operação cancelada pelo usuário.' [cite_start]-ForegroundColor Red; return }; try { Remove-Computer -Credential $Credential -PassThru -Verbose -Restart -Force } catch { Write-Host \"❌ Erro ao sair do domínio: $_\" -ForegroundColor Red } }" [cite: 185, 186, 187]
 pause
 goto DOMINIO
 
@@ -1066,9 +1063,9 @@ echo ╔════════════════════════
 echo ║                 INFORMAÇÕES DO COMPUTADOR                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; $OS = Get-WmiObject Win32_OperatingSystem; Write-Host '=== INFORMAÇÕES GERAIS ===' -ForegroundColor Cyan; Write-Host 'Nome do Computador:' $ComputerSystem.Name; Write-Host 'Sistema Operacional:' $OS.Caption; Write-Host 'Versão:' $OS.Version; Write-Host 'Usuário Logado:' $ComputerSystem.UserName; Write-Host; Write-Host '=== INFORMAÇÕES DE DOMÍNIO ===' -ForegroundColor Cyan; if ($ComputerSystem.PartOfDomain) { Write-Host 'Status: Membro do Domínio' -ForegroundColor Green; Write-Host 'Domínio:' $ComputerSystem.Domain; Write-Host 'Função:' $ComputerSystem.DomainRole } else { Write-Host 'Status: Workgroup' -ForegroundColor Yellow; Write-Host 'Workgroup:' $ComputerSystem.Workgroup } }"
+[cite_start]powershell.exe -Command "& { $ComputerSystem = Get-WmiObject Win32_ComputerSystem; $OS = Get-WmiObject Win32_OperatingSystem; Write-Host '=== INFORMAÇÕES GERAIS ===' -ForegroundColor Cyan; Write-Host 'Nome do Computador:' $ComputerSystem.Name; Write-Host 'Sistema Operacional:' $OS.Caption; Write-Host 'Versão:' $OS.Version; Write-Host 'Usuário Logado:' $ComputerSystem.UserName; Write-Host; Write-Host '=== INFORMAÇÕES DE DOMÍNIO ===' -ForegroundColor Cyan; if ($ComputerSystem.PartOfDomain) { Write-Host 'Status: Membro do Domínio' -ForegroundColor Green; Write-Host 'Domínio:' $ComputerSystem.Domain; Write-Host 'Função:' $ComputerSystem.DomainRole } else { Write-Host 'Status: Workgroup' -ForegroundColor Yellow; Write-Host 'Workgroup:' $ComputerSystem.Workgroup } }" [cite: 189]
 echo.
-pause
+[cite_start]pause [cite: 190]
 goto DOMINIO
 
 :DRIVERS
@@ -1088,7 +1085,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p driver_opcao=Digite sua opção: 
+[cite_start]set /p driver_opcao=Digite sua opção: [cite: 195]
 
 if "%driver_opcao%"=="1" goto BACKUP_DRIVERS
 if "%driver_opcao%"=="2" goto RESTAURAR_DRIVERS
@@ -1106,9 +1103,9 @@ echo ╔════════════════════════
 echo ║                     BACKUP DOS DRIVERS                            ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Este processo irá fazer backup de todos os drivers instalados.
+[cite_start]echo Este processo irá fazer backup de todos os drivers instalados. [cite: 197]
 echo.
-set /p pasta_backup=Digite o caminho para salvar o backup (ex: C:\DriverBackup): 
+[cite_start]set /p pasta_backup=Digite o caminho para salvar o backup (ex: C:\DriverBackup): [cite: 198]
 
 if "%pasta_backup%"=="" (
     set pasta_backup=C:\DriverBackup
@@ -1116,7 +1113,7 @@ if "%pasta_backup%"=="" (
 )
 
 echo.
-echo Criando pasta de backup: %pasta_backup%
+[cite_start]echo Criando pasta de backup: %pasta_backup% [cite: 199]
 if not exist "%pasta_backup%" (
     mkdir "%pasta_backup%" 2>nul
     if errorlevel 1 (
@@ -1127,12 +1124,11 @@ if not exist "%pasta_backup%" (
 )
 
 echo.
-echo ✅ Iniciando backup dos drivers...
-echo Aguarde, este processo pode demorar alguns minutos...
+[cite_start]echo ✅ Iniciando backup dos drivers... [cite: 200]
+[cite_start]echo Aguarde, este processo pode demorar alguns minutos... [cite: 200]
 echo.
-
-:: Fazer backup usando DISM
-dism /online /export-driver /destination:"%pasta_backup%"
+[cite_start]:: Fazer backup usando DISM [cite: 201]
+[cite_start]dism /online /export-driver /destination:"%pasta_backup%" [cite: 201]
 
 if errorlevel 1 (
     echo.
@@ -1145,8 +1141,8 @@ if errorlevel 1 (
         echo ❌ Erro no backup dos drivers.
         echo Verifique se você tem permissões administrativas.
     ) else (
-        echo ✅ Backup dos drivers concluído com sucesso!
-        echo Localização: %pasta_backup%
+        [cite_start]echo ✅ Backup dos drivers concluído com sucesso! [cite: 202]
+        [cite_start]echo Localização: %pasta_backup% [cite: 202]
     )
 ) else (
     echo.
@@ -1158,7 +1154,7 @@ if errorlevel 1 (
     echo ═══════════════════════════════════════════════════════════════════
     echo Estatísticas do backup:
     for /f %%i in ('dir "%pasta_backup%" /s /b *.inf ^| find /c /v ""') do echo Total de drivers: %%i arquivos
-    echo.
+    [cite_start]echo. [cite: 203]
 )
 
 pause
@@ -1171,10 +1167,10 @@ echo ╔════════════════════════
 echo ║                   RESTAURAR DRIVERS DO BACKUP                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ⚠️  ATENÇÃO: Esta operação irá instalar drivers do backup.
+[cite_start]echo ⚠️  ATENÇÃO: Esta operação irá instalar drivers do backup. [cite: 204]
 echo Certifique-se de que o backup seja confiável.
 echo.
-set /p pasta_restaurar=Digite o caminho do backup dos drivers: 
+[cite_start]set /p pasta_restaurar=Digite o caminho do backup dos drivers: [cite: 205]
 
 if "%pasta_restaurar%"=="" (
     echo ❌ Caminho não informado.
@@ -1189,11 +1185,11 @@ if not exist "%pasta_restaurar%" (
 )
 
 echo.
-set /p confirma_restaurar=Deseja continuar com a restauração? (S/N): 
+set /p confirma_restaurar=Deseja continuar com a restauração? (S/N)[cite_start]: [cite: 206]
 if /i "%confirma_restaurar%" NEQ "S" goto DRIVERS
 
 echo.
-echo Restaurando drivers do backup...
+[cite_start]echo Restaurando drivers do backup... [cite: 207]
 pnputil /add-driver "%pasta_restaurar%\*.inf" /subdirs /install
 
 if errorlevel 1 (
@@ -1213,17 +1209,17 @@ echo ╔════════════════════════
 echo ║                    DRIVERS INSTALADOS                             ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Listando drivers instalados no sistema...
+[cite_start]echo Listando drivers instalados no sistema... [cite: 209]
 echo.
 
 :: Listar drivers usando PowerShell
-powershell.exe -Command "Get-WindowsDriver -Online | Select-Object Driver, Date, Version, ClassName | Sort-Object ClassName | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-WindowsDriver -Online | Select-Object Driver, Date, Version, ClassName | Sort-Object ClassName | Format-Table -AutoSize" [cite: 209]
 
 echo.
-echo ═══════════════════════════════════════════════════════════════════
-echo Drivers de terceiros (não Microsoft):
+[cite_start]echo ═══════════════════════════════════════════════════════════════════ [cite: 210]
+[cite_start]echo Drivers de terceiros (não Microsoft): [cite: 210]
 echo.
-powershell.exe -Command "Get-WindowsDriver -Online | Where-Object {$_.ProviderName -ne 'Microsoft'} | Select-Object Driver, ProviderName, Date, Version | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-WindowsDriver -Online | Where-Object {$_.ProviderName -ne 'Microsoft'} | Select-Object Driver, ProviderName, Date, Version | Format-Table -AutoSize" [cite: 210]
 
 pause
 goto DRIVERS
@@ -1235,15 +1231,15 @@ echo ╔════════════════════════
 echo ║              VERIFICANDO DRIVERS SEM ASSINATURA                   ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Verificando drivers sem assinatura digital...
+[cite_start]echo Verificando drivers sem assinatura digital... [cite: 212]
 echo.
 
 :: Verificar drivers não assinados
-powershell.exe -Command "Get-WindowsDriver -Online | Where-Object {$_.DigitalSigner -eq ''} | Select-Object Driver, ProviderName, Date, Version | Format-Table -AutoSize"
+[cite_start]powershell.exe -Command "Get-WindowsDriver -Online | Where-Object {$_.DigitalSigner -eq ''} | Select-Object Driver, ProviderName, Date, Version | Format-Table -AutoSize" [cite: 212]
 
 echo.
-echo ═══════════════════════════════════════════════════════════════════
-echo Verificação de integridade dos drivers do sistema:
+[cite_start]echo ═══════════════════════════════════════════════════════════════════ [cite: 213]
+[cite_start]echo Verificação de integridade dos drivers do sistema: [cite: 213]
 echo.
 verifier /query
 
@@ -1257,19 +1253,19 @@ echo ╔════════════════════════
 echo ║               ATUALIZAR DRIVERS VIA WINDOWS UPDATE                ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Iniciando busca por atualizações de drivers...
+[cite_start]echo Iniciando busca por atualizações de drivers... [cite: 215]
 echo.
 
 :: Tentar atualizar drivers via Windows Update
-powershell.exe -Command "Start-Process 'ms-settings:windowsupdate-opcionalsearch' -Wait"
+[cite_start]powershell.exe -Command "Start-Process 'ms-settings:windowsupdate-opcionalsearch' -Wait" [cite: 215]
 
 echo.
-echo Verificando se há drivers disponíveis para atualização...
+[cite_start]echo Verificando se há drivers disponíveis para atualização... [cite: 216]
 pnputil /enum-drivers
 
 echo.
-echo ✅ Processo concluído!
-echo Verifique o Windows Update para drivers opcionais.
+[cite_start]echo ✅ Processo concluído! [cite: 216]
+[cite_start]echo Verifique o Windows Update para drivers opcionais. [cite: 217]
 
 pause
 goto DRIVERS
@@ -1281,14 +1277,14 @@ echo ╔════════════════════════
 echo ║                EXPORTAR LISTA DE DRIVERS                          ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Escolha onde salvar o arquivo:
+[cite_start]echo Escolha onde salvar o arquivo: [cite: 219]
 echo.
 echo [1] Desktop do usuário atual
 echo [2] Pasta Documentos
 echo [3] Pasta personalizada
 echo [4] Pasta atual do script
 echo.
-set /p local_opcao=Digite sua opção (1-4): 
+[cite_start]set /p local_opcao=Digite sua opção (1-4): [cite: 220]
 
 if "%local_opcao%"=="1" (
     set "pasta_destino=%USERPROFILE%\Desktop"
@@ -1297,7 +1293,7 @@ if "%local_opcao%"=="1" (
     set "pasta_destino=%USERPROFILE%\Documents"
     set "local_nome=Documentos"
 ) else if "%local_opcao%"=="3" (
-    set /p pasta_destino=Digite o caminho completo da pasta: 
+    set /p pasta_destino=Digite o caminho completo da pasta:
     set "local_nome=pasta personalizada"
     if not exist "%pasta_destino%" (
         echo ❌ Pasta não encontrada: %pasta_destino%
@@ -1305,34 +1301,35 @@ if "%local_opcao%"=="1" (
         goto DRIVERS
     )
 ) else (
-    set "pasta_destino=%~dp0"
-    set "local_nome=pasta do script"
+    [cite_start]set "pasta_destino=%~dp0" [cite: 221]
+    [cite_start]set "local_nome=pasta do script" [cite: 221]
 )
 
 echo.
-set /p arquivo_export=Digite o nome do arquivo (ex: drivers_list.txt): 
+[cite_start]set /p arquivo_export=Digite o nome do arquivo (ex: drivers_list.txt): [cite: 222]
 if "%arquivo_export%"=="" set arquivo_export=drivers_list_%date:~6,4%-%date:~3,2%-%date:~0,2%.txt
 
 set "caminho_completo=%pasta_destino%\%arquivo_export%"
 
 echo.
-echo Exportando lista de drivers para:
+[cite_start]echo Exportando lista de drivers para: [cite: 223]
 echo Local: %local_nome%
 echo Arquivo: %caminho_completo%
 echo.
-
-:: Exportar lista detalhada
-echo === LISTA DE DRIVERS INSTALADOS === > "%caminho_completo%"
-echo Data de geração: %date% %time% >> "%caminho_completo%"
-echo Computador: %COMPUTERNAME% >> "%caminho_completo%"
-echo Usuário: %USERNAME% >> "%caminho_completo%"
-echo. >> "%caminho_completo%"
+[cite_start]:: Exportar lista detalhada [cite: 224]
+[cite_start]echo === LISTA DE DRIVERS INSTALADOS === > "%caminho_completo%" [cite: 224]
+[cite_start]echo Data de geração: %date% %time% >> "%caminho_completo%" [cite: 224]
+[cite_start]echo Computador: %COMPUTERNAME% >> "%caminho_completo%" [cite: 224]
+[cite_start]echo Usuário: %USERNAME% >> "%caminho_completo%" [cite: 224]
+echo.
+>> [cite_start]"%caminho_completo%" [cite: 225]
 
 powershell.exe -Command "Get-WindowsDriver -Online | Select-Object Driver, ProviderName, Date, Version, ClassName | Sort-Object ClassName | Format-Table -AutoSize | Out-String -Width 120" >> "%caminho_completo%"
 
-echo. >> "%caminho_completo%"
-echo === DRIVERS DE TERCEIROS === >> "%caminho_completo%"
-echo. >> "%caminho_completo%"
+echo.
+>> [cite_start]"%caminho_completo%" [cite: 226]
+[cite_start]echo === DRIVERS DE TERCEIROS === >> "%caminho_completo%" [cite: 226]
+echo. >> [cite_start]"%caminho_completo%" [cite: 226]
 
 powershell.exe -Command "Get-WindowsDriver -Online | Where-Object {$_.ProviderName -ne 'Microsoft'} | Select-Object Driver, ProviderName, Date, Version | Format-Table -AutoSize | Out-String -Width 120" >> "%caminho_completo%"
 
@@ -1344,8 +1341,8 @@ if errorlevel 1 (
     echo 📄 Arquivo salvo em: %caminho_completo%
     echo 📁 Para abrir a pasta: explorer "%pasta_destino%"
     echo.
-    set /p abrir_pasta=Deseja abrir a pasta onde foi salvo? (S/N): 
-    if /i "!abrir_pasta!"=="S" explorer "%pasta_destino%"
+    [cite_start]set /p abrir_pasta=Deseja abrir a pasta onde foi salvo? (S/N): [cite: 227]
+    [cite_start]if /i "!abrir_pasta!"=="S" explorer "%pasta_destino%" [cite: 227]
 )
 
 pause
@@ -1358,7 +1355,7 @@ echo ╔════════════════════════
 echo ║              ABRINDO POWERSHELL COMO ADMIN                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-powershell.exe -Command "Start-Process powershell -Verb runAs"
+[cite_start]powershell.exe -Command "Start-Process powershell -Verb runAs" [cite: 229]
 goto UTILITARIOS
 
 :INSTALAR_PROGRAMAS
@@ -1382,7 +1379,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p programa_opcao=Digite sua opção: 
+[cite_start]set /p programa_opcao=Digite sua opção: [cite: 237]
 
 if "%programa_opcao%"=="1" goto INSTALAR_CHROME
 if "%programa_opcao%"=="2" goto INSTALAR_FIREFOX
@@ -1404,7 +1401,7 @@ echo ╔════════════════════════
 echo ║                    INSTALANDO GOOGLE CHROME                       ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Verificando Winget...
+[cite_start]echo Verificando Winget... [cite: 239]
 winget --version >nul 2>&1
 if errorlevel 1 (
     echo ❌ Winget não está disponível neste sistema.
@@ -1412,7 +1409,7 @@ if errorlevel 1 (
     pause
     goto INSTALAR_PROGRAMAS
 )
-echo ✅ Winget disponível. Instalando Google Chrome...
+echo ✅ Winget disponível. [cite_start]Instalando Google Chrome... [cite: 239, 240]
 winget install Google.Chrome --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1430,7 +1427,7 @@ echo ╔════════════════════════
 echo ║                    INSTALANDO MOZILLA FIREFOX                     ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando Mozilla Firefox...
+[cite_start]echo Instalando Mozilla Firefox... [cite: 242]
 winget install Mozilla.Firefox --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1448,7 +1445,7 @@ echo ╔════════════════════════
 echo ║                    INSTALANDO ADOBE READER                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando Adobe Acrobat Reader...
+[cite_start]echo Instalando Adobe Acrobat Reader... [cite: 244]
 winget install Adobe.Acrobat.Reader.64-bit --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1466,7 +1463,7 @@ echo ╔════════════════════════
 echo ║                     INSTALANDO FOXIT READER                       ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando Foxit Reader...
+[cite_start]echo Instalando Foxit Reader... [cite: 246]
 winget install Foxit.FoxitReader --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1484,7 +1481,7 @@ echo ╔════════════════════════
 echo ║                    INSTALANDO GOOGLE DRIVE                        ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando Google Drive...
+[cite_start]echo Instalando Google Drive... [cite: 248]
 winget install Google.GoogleDrive --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1502,7 +1499,7 @@ echo ╔════════════════════════
 echo ║                    INSTALANDO LIBREOFFICE                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando LibreOffice...
+[cite_start]echo Instalando LibreOffice... [cite: 250]
 winget install TheDocumentFoundation.LibreOffice --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1520,7 +1517,7 @@ echo ╔════════════════════════
 echo ║                   INSTALANDO CRYSTALDISKINFO                      ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando CrystalDiskInfo...
+[cite_start]echo Instalando CrystalDiskInfo... [cite: 252]
 winget install CrystalDewWorld.CrystalDiskInfo --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1538,7 +1535,7 @@ echo ╔════════════════════════
 echo ║                   INSTALANDO CRYSTALDISKMARK                      ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando CrystalDiskMark...
+[cite_start]echo Instalando CrystalDiskMark... [cite: 254]
 winget install CrystalDewWorld.CrystalDiskMark --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1556,7 +1553,7 @@ echo ╔════════════════════════
 echo ║                      INSTALANDO CPU-Z                             ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Instalando CPU-Z...
+[cite_start]echo Instalando CPU-Z... [cite: 256]
 winget install CPUID.CPU-Z --accept-package-agreements --accept-source-agreements
 echo.
 if errorlevel 1 (
@@ -1574,14 +1571,14 @@ echo ╔════════════════════════
 echo ║                   INSTALAÇÃO EM LOTE                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo ATENÇÃO: Esta opção irá instalar todos os programas listados.
+[cite_start]echo ATENÇÃO: Esta opção irá instalar todos os programas listados. [cite: 258]
 echo O processo pode demorar alguns minutos.
 echo.
-set /p confirma_todos=Deseja continuar? (S/N): 
+set /p confirma_todos=Deseja continuar? (S/N)[cite_start]: [cite: 259]
 if /i "%confirma_todos%" NEQ "S" goto INSTALAR_PROGRAMAS
 
 echo.
-echo Verificando Winget...
+[cite_start]echo Verificando Winget... [cite: 260]
 winget --version >nul 2>&1
 if errorlevel 1 (
     echo ❌ Winget não está disponível neste sistema.
@@ -1590,129 +1587,49 @@ if errorlevel 1 (
     goto INSTALAR_PROGRAMAS
 )
 
-echo ✅ Winget disponível. Iniciando instalação em lote...
+echo ✅ Winget disponível. [cite_start]Iniciando instalação em lote... [cite: 260, 261]
 echo.
-echo [1/9] Instalando Google Chrome...
+[cite_start]echo [1/9] Instalando Google Chrome... [cite: 261]
 winget install Google.Chrome --accept-package-agreements --accept-source-agreements --silent
 echo.
-echo [2/9] Instalando Mozilla Firefox...
+[cite_start]echo [2/9] Instalando Mozilla Firefox... [cite: 262]
 winget install Mozilla.Firefox --accept-package-agreements --accept-source-agreements --silent
 echo.
 echo [3/9] Instalando Adobe Reader...
 winget install Adobe.Acrobat.Reader.64-bit --accept-package-agreements --accept-source-agreements --silent
 echo.
-echo [4/9] Instalando Foxit Reader...
+[cite_start]echo [4/9] Instalando Foxit Reader... [cite: 263]
 winget install Foxit.FoxitReader --accept-package-agreements --accept-source-agreements --silent
 echo.
 echo [5/9] Instalando Google Drive...
 winget install Google.GoogleDrive --accept-package-agreements --accept-source-agreements --silent
 echo.
-echo [6/9] Instalando LibreOffice...
+[cite_start]echo [6/9] Instalando LibreOffice... [cite: 264]
 winget install TheDocumentFoundation.LibreOffice --accept-package-agreements --accept-source-agreements --silent
 echo.
 echo [7/9] Instalando CrystalDiskInfo...
 winget install CrystalDewWorld.CrystalDiskInfo --accept-package-agreements --accept-source-agreements --silent
 echo.
-echo [8/9] Instalando CrystalDiskMark...
+[cite_start]echo [8/9] Instalando CrystalDiskMark... [cite: 265]
 winget install CrystalDewWorld.CrystalDiskMark --accept-package-agreements --accept-source-agreements --silent
 echo.
 echo [9/9] Instalando CPU-Z...
 winget install CPUID.CPU-Z --accept-package-agreements --accept-source-agreements --silent
 echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                 INSTALAÇÃO EM LOTE CONCLUÍDA                      ║
-echo ╚════════════════════════════════════════════════════════════════════╝
+[cite_start]echo ╔════════════════════════════════════════════════════════════════════╗ [cite: 266]
+[cite_start]echo ║                 INSTALAÇÃO EM LOTE CONCLUÍDA                      ║ [cite: 266]
+[cite_start]echo ╚════════════════════════════════════════════════════════════════════╝ [cite: 266]
 echo.
-echo ✅ Processo de instalação finalizado!
+[cite_start]echo ✅ Processo de instalação finalizado! [cite: 267]
 echo Verifique se todos os programas foram instalados corretamente.
 pause
 goto INSTALAR_PROGRAMAS
-
-:ATIVAR_WINDOWS_OFFICE
-cls
-echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                 ATIVAR WINDOWS E OFFICE                           ║
-echo ╚════════════════════════════════════════════════════════════════════╝
-echo.
-echo ⚠️  AVISO IMPORTANTE:
-echo.
-echo Esta ferramenta utiliza um script de terceiros para ativação.
-echo Certifique-se de que está executando em um ambiente apropriado.
-echo.
-echo O que será executado:
-echo - Script de ativação do Windows
-echo - Script de ativação do Office
-echo - Verificação de status de ativação
-echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                                                                    ║
-echo ║  [1] Abrir Ativador                                                ║
-echo ║  [2] Verificar Status de Ativação                                  ║
-echo ║  [0] Voltar ao Menu Principal                                      ║
-echo ║                                                                    ║
-echo ╚════════════════════════════════════════════════════════════════════╝
-echo.
-set /p ativacao_opcao=Digite sua opção: 
-
-if "%ativacao_opcao%"=="1" goto ABRIR_ATIVADOR
-if "%ativacao_opcao%"=="2" goto VERIFICAR_ATIVACAO
-if "%ativacao_opcao%"=="0" goto MAIN_MENU
-goto ATIVAR_WINDOWS_OFFICE
-
-:ABRIR_ATIVADOR
-cls
-echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                      ABRINDO ATIVADOR                             ║
-echo ╚════════════════════════════════════════════════════════════════════╝
-echo.
-echo Iniciando ativador...
-echo.
-set /p confirma_ativador=Deseja continuar? (S/N): 
-if /i "%confirma_ativador%" NEQ "S" goto ATIVAR_WINDOWS_OFFICE
-
-echo.
-echo 🚀 Executando ativador...
-echo.
-powershell.exe -Command "irm https://get.activated.win | iex"
-echo.
-echo ✅ Ativador executado.
-pause
-goto ATIVAR_WINDOWS_OFFICE
-
-:VERIFICAR_ATIVACAO
-cls
-echo.
-echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                 VERIFICAR STATUS DE ATIVAÇÃO                      ║
-echo ╚════════════════════════════════════════════════════════════════════╝
-echo.
-echo Verificando status de ativação do Windows...
-echo.
-echo ═══════════════════════════════════════════════════════════════════
-echo STATUS DO WINDOWS:
-echo ═══════════════════════════════════════════════════════════════════
-powershell.exe -Command "& { try { $license = Get-WmiObject -Class SoftwareLicensingProduct | Where-Object { $_.PartialProductKey -and $_.LicenseStatus -eq 1 }; if ($license) { Write-Host '✅ Windows está ATIVADO' -ForegroundColor Green; $license | ForEach-Object { Write-Host \"Produto: $($_.Name)\" -ForegroundColor Cyan; Write-Host \"Chave Parcial: $($_.PartialProductKey)\" -ForegroundColor Yellow } } else { $notActivated = Get-WmiObject -Class SoftwareLicensingProduct | Where-Object { $_.PartialProductKey -and $_.LicenseStatus -ne 1 } | Select-Object -First 1; if ($notActivated) { Write-Host '❌ Windows NÃO está ativado' -ForegroundColor Red; Write-Host \"Produto: $($notActivated.Name)\" -ForegroundColor Yellow; Write-Host \"Status: $($notActivated.LicenseStatusReason)\" -ForegroundColor Red } else { Write-Host '⚠️  Não foi possível verificar o status do Windows' -ForegroundColor Yellow } } } catch { Write-Host 'Erro ao verificar Windows:' $_.Exception.Message -ForegroundColor Red } }"
-echo.
-echo ═══════════════════════════════════════════════════════════════════
-echo INFORMAÇÕES DO SISTEMA:
-echo ═══════════════════════════════════════════════════════════════════
-powershell.exe -Command "& { $os = Get-WmiObject Win32_OperatingSystem; Write-Host \"Sistema: $($os.Caption)\" -ForegroundColor Cyan; Write-Host \"Versão: $($os.Version)\" -ForegroundColor Cyan; Write-Host \"Arquitetura: $($os.OSArchitecture)\" -ForegroundColor Cyan }"
-echo.
-echo ═══════════════════════════════════════════════════════════════════
-echo STATUS DO OFFICE:
-echo ═══════════════════════════════════════════════════════════════════
-powershell.exe -Command "& { try { $office = Get-WmiObject -Query 'SELECT * FROM SoftwareLicensingProduct WHERE ApplicationId = \"0ff1ce15-a989-479d-af46-f275c6370663\" AND LicenseStatus = 1 AND PartialProductKey IS NOT NULL'; if ($office) { Write-Host '✅ Office está ATIVADO' -ForegroundColor Green; $office | ForEach-Object { Write-Host \"Produto: $($_.Name)\" -ForegroundColor Cyan; Write-Host \"Chave Parcial: $($_.PartialProductKey)\" -ForegroundColor Yellow } } else { $officeInstalled = Get-WmiObject -Query 'SELECT * FROM SoftwareLicensingProduct WHERE ApplicationId = \"0ff1ce15-a989-479d-af46-f275c6370663\" AND PartialProductKey IS NOT NULL' | Select-Object -First 1; if ($officeInstalled) { Write-Host '❌ Office instalado mas NÃO ativado' -ForegroundColor Red; Write-Host \"Produto: $($officeInstalled.Name)\" -ForegroundColor Yellow } else { Write-Host '⚠️  Office não foi encontrado no sistema' -ForegroundColor Yellow } } } catch { Write-Host 'Erro ao verificar Office:' $_.Exception.Message -ForegroundColor Red } }"
-echo.
-pause
-goto ATIVAR_WINDOWS_OFFICE
 
 :SAIR
 cls
 echo.
 echo ╔════════════════════════════════════════════════════════════════════╗
-echo ║                   OBRIGADO POR USAR O SISTEMA!                    ║
+echo ║                   OBRIGADO POR USAR O SISTEMA!                    [cite_start]║ [cite: 285]
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
 pause
@@ -1724,12 +1641,12 @@ echo ╔════════════════════════
 echo ║     ANALISAR E REPARAR ARQUIVOS ESSENCIAIS (DISM)                 ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Executando DISM para reparar arquivos corrompidos...
+[cite_start]echo Executando DISM para reparar arquivos corrompidos... [cite: 287]
 echo ATENÇÃO: Este processo pode demorar vários minutos.
 echo.
 DISM.exe /Online /Cleanup-image /Restorehealth
 echo.
-pause
+[cite_start]pause [cite: 288]
 goto SISTEMA
 
 :MEMORIA
@@ -1739,13 +1656,13 @@ echo ╔════════════════════════
 echo ║                    VERIFICAÇÃO DE MEMÓRIA                         ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Este processo irá reiniciar o computador e iniciar o diagnóstico de memória.
+[cite_start]echo Este processo irá reiniciar o computador e iniciar o diagnóstico de memória. [cite: 289]
 echo.
-set /p confirma_memoria=Deseja continuar com a verificação de memória? (S/N): 
+set /p confirma_memoria=Deseja continuar com a verificação de memória? (S/N)[cite_start]: [cite: 290]
 if /i "%confirma_memoria%" NEQ "S" goto SISTEMA
 
 echo.
-echo Iniciando ferramenta de verificação de memória...
+[cite_start]echo Iniciando ferramenta de verificação de memória... [cite: 291]
 mdsched
 goto SISTEMA
 
@@ -1763,7 +1680,7 @@ echo ║  [0] Voltar ao Menu Principal                                      ║
 echo ║                                                                    ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-set /p disco_opcao=Digite sua opção: 
+[cite_start]set /p disco_opcao=Digite sua opção: [cite: 295]
 
 if "%disco_opcao%"=="1" goto INFO_DISCO
 if "%disco_opcao%"=="2" goto DEFRAG_DISCO
@@ -1777,15 +1694,15 @@ echo ═════════════════════════
 echo ║                   INFORMAÇÕES DO DISCO                            ║
 echo ════════════════════════════════════════════════════════════════════
 echo.
-echo Discos Físicos:
+[cite_start]echo Discos Físicos: [cite: 297]
 echo.
-powershell.exe -Command "Get-PhysicalDisk | Select-Object @{Name='Nome'; Expression={$_.FriendlyName}}, @{Name='Tipo de Mídia'; Expression={$_.MediaType}}, @{Name='Tamanho (GB)'; Expression={[math]::Round($_.Size / 1GB, 2)} }, @{Name='Número de Série'; Expression={$_.SerialNumber} } | Format-Table -AutoSize -Wrap"
+[cite_start]powershell.exe -Command "Get-PhysicalDisk | Select-Object @{Name='Nome'; Expression={$_.FriendlyName}}, @{Name='Tipo de Mídia'; Expression={$_.MediaType}}, @{Name='Tamanho (GB)'; Expression={[math]::Round($_.Size / 1GB, 2)} }, @{Name='Número de Série'; Expression={$_.SerialNumber} } | Format-Table -AutoSize -Wrap" [cite: 297]
 echo.
-echo Volumes e Partições:
+[cite_start]echo Volumes e Partições: [cite: 298]
 echo.
-powershell.exe -Command "Get-Volume | Where-Object { $_.DriveLetter } | Select-Object @{Name='Letra da Unidade'; Expression={$_.DriveLetter}}, @{Name='Rótulo'; Expression={$_.FileSystemLabel}}, @{Name='Sistema de Arquivos'; Expression={$_.FileSystem}}, @{Name='Espaço Livre (GB)'; Expression={[math]::Round($_.SizeRemaining / 1GB, 2)} }, @{Name='Tamanho Total (GB)'; Expression={[math]::Round($_.Size / 1GB, 2)} } | Format-Table -AutoSize -Wrap"
+[cite_start]powershell.exe -Command "Get-Volume | Where-Object { $_.DriveLetter } | Select-Object @{Name='Letra da Unidade'; Expression={$_.DriveLetter}}, @{Name='Rótulo'; Expression={$_.FileSystemLabel}}, @{Name='Sistema de Arquivos'; Expression={$_.FileSystem}}, @{Name='Espaço Livre (GB)'; Expression={[math]::Round($_.SizeRemaining / 1GB, 2)} }, @{Name='Tamanho Total (GB)'; Expression={[math]::Round($_.Size / 1GB, 2)} } | Format-Table -AutoSize -Wrap" [cite: 298]
 echo.
-pause
+[cite_start]pause [cite: 299]
 goto DISCO
 
 
@@ -1796,11 +1713,12 @@ echo ╔════════════════════════
 echo ║                  DESFRAGMENTAR DISCO                              ║
 echo ╚════════════════════════════════════════════════════════════════════╝
 echo.
-echo Discos disponíveis:
-powershell.exe -Command "Get-Volume | Where-Object { $_.DriveLetter } | Select-Object DriveLetter, FileSystemLabel | Format-Table -AutoSize"
+[cite_start]echo Discos disponíveis: [cite: 300]
+[cite_start]powershell.exe -Command "Get-Volume | Where-Object { $_.DriveLetter } | Select-Object DriveLetter, FileSystemLabel | Format-Table -AutoSize" [cite: 300]
 echo.
-set /p letra_disco=Digite a letra do disco a ser desfragmentado (ex: C): 
+[cite_start]set /p letra_disco=Digite a letra do disco a ser desfragmentado (ex: C): [cite: 301]
 defrag %letra_disco%: /U /V
 echo.
 pause
 goto DISCO
+```
