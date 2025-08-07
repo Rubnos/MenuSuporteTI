@@ -2,7 +2,7 @@
 
 Um script de automação completo para diagnóstico, manutenção e otimização de sistemas Windows, projetado para técnicos de TI e usuários avançados.
 
- \#\# 📝 Descrição
+ ## 📝 Descrição
 
 Esta ferramenta é um script de lote (`.bat`) que fornece uma interface de menu de texto para executar uma vasta gama de tarefas de suporte técnico. Ele automatiza comandos comuns e complexos do Windows, utilizando uma combinação de `CMD` e `PowerShell` para oferecer funcionalidades que vão desde a limpeza de disco e diagnóstico de rede até o gerenciamento de drivers e a instalação de softwares essenciais.
 
