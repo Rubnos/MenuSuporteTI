@@ -79,7 +79,7 @@ A ferramenta é organizada em menus e submenus para fácil navegação.
     * PowerShell como Admin
 
 * **[7] Domínio**
-    * `[1]  Ingressar no Domínio (Iketani, Labsi, Premazon, Densimagen)`
+    * `[1]  Ingressar no Domínio `
     * `[2]` Verificar Status do Domínio
     * `[3]` Sair do Domínio
     * `[4]` Informações do Computador
