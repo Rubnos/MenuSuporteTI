@@ -9,13 +9,13 @@ Esta ferramenta é um script de lote (`.bat`) que fornece uma interface de menu 
 ## ✨ Funcionalidades Principais
 
   * **Diagnóstico de Sistema**: Verifique a integridade de arquivos do sistema (`SFC`, `DISM`), cheque o disco em busca de erros (`CHKDSK`) e analise a memória RAM.
-  * **Gerenciamento de Rede**: Realize diagnósticos, resete configurações TCP/IP, limpe o cache DNS e gerencie o Firewall do Windows[cite: 12, 13, 15].
-  * **Manutenção de Disco**: Obtenha informações detalhadas sobre os discos e realize desfragmentação[cite: 292, 293].
+  * **Gerenciamento de Rede**: Realize diagnósticos, resete configurações TCP/IP, limpe o cache DNS e gerencie o Firewall do Windows.
+  * **Manutenção de Disco**: Obtenha informações detalhadas sobre os discos e realize desfragmentação.
   * **Solução de Problemas de Impressora**: Limpe a fila de impressão, gerencie drivers e aplique correções para erros comuns de rede (`0x0000011b`, `0x00000bcb`, `0x00000709`).
-  * **Gerenciamento de Drivers**: Faça backup, restaure, liste e exporte os drivers do sistema[cite: 191, 192, 193].
-  * **Instalação de Software**: Automatize a instalação de programas essenciais usando `winget`[cite: 7].
-  * **Utilitários de Sistema**: Acesso rápido a ferramentas como `RegEdit`, `MSConfig`, Monitor de Recursos e Prompt de Comando como Administrador[cite: 149, 150, 151].
-  * **Gerenciamento de Domínio**: Facilita o ingresso, a saída e a verificação de status de um computador em um domínio do Active Directory[cite: 161, 162, 163].
+  * **Gerenciamento de Drivers**: Faça backup, restaure, liste e exporte os drivers do sistema.
+  * **Instalação de Software**: Automatize a instalação de programas essenciais usando `winget`.
+  * **Utilitários de Sistema**: Acesso rápido a ferramentas como `RegEdit`, `MSConfig`, Monitor de Recursos e Prompt de Comando como Administrador.
+  * **Gerenciamento de Domínio**: Facilita o ingresso, a saída e a verificação de status de um computador em um domínio do Active Directory].
 
 ## 📂 Estrutura do Menu
 
