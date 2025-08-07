@@ -15,7 +15,8 @@ Esta ferramenta é um script de lote (`.bat`) que fornece uma interface de menu 
   * **Gerenciamento de Drivers**: Faça backup, restaure, liste e exporte os drivers do sistema.
   * **Instalação de Software**: Automatize a instalação de programas essenciais usando `winget`.
   * **Utilitários de Sistema**: Acesso rápido a ferramentas como `RegEdit`, `MSConfig`, Monitor de Recursos e Prompt de Comando como Administrador.
-  * **Gerenciamento de Domínio**: Facilita o ingresso, a saída e a verificação de status de um computador em um domínio do Active Directory].
+  * **Gerenciamento de Domínio: Facilita o ingresso, a saída e a verificação de status de um computador em um domínio do Active Directory. Os domínios disponíveis para ingresso devem ser previamente definidos dentro do script.
+    
 
 ## 📂 Estrutura do Menu
 
