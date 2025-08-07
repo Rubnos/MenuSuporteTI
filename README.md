@@ -21,105 +21,94 @@ Esta ferramenta é um script de lote (`.bat`) que fornece uma interface de menu 
 
 A ferramenta é organizada em menus e submenus para fácil navegação.
 
-\<details\>
-\<summary\>\<strong\>Ver Estrutura Completa do Menu\</strong\>\</summary\>
+<details>
+<summary><strong>Ver Estrutura Completa do Menu</strong></summary>
 
-  * [cite\_start]**[1] Sistema** [cite: 2]
+* **[1] Sistema**
+    * `[1]` Informações do Sistema
+    * `[2]` Analisar e Reparar Arquivos Essenciais (DISM)
+    * `[3]` Verificar Integridade dos Arquivos (SFC)
+    * `[4]` Verificar Disco (CHKDSK)
+    * `[5]` Informações de Hardware
+    * `[6]` Gerenciador de Tarefas
+    * `[7]` Serviços do Windows
+    * `[8]` Verificar Memória (mdsched)
 
-      * [cite\_start]`[1]` Informações do Sistema [cite: 64]
-      * [cite\_start]`[2]` Analisar e Reparar Arquivos Essenciais (DISM) [cite: 65]
-      * [cite\_start]`[3]` Verificar Integridade dos Arquivos (SFC) [cite: 65]
-      * [cite\_start]`[4]` Verificar Disco (CHKDSK) [cite: 66]
-      * [cite\_start]`[5]` Informações de Hardware [cite: 66]
-      * [cite\_start]`[6]` Gerenciador de Tarefas [cite: 66]
-      * [cite\_start]`[7]` Serviços do Windows [cite: 67]
-      * [cite\_start]`[8]` Verificar Memória (mdsched) [cite: 67]
+* **[2] Rede**
+    * `[1]` Diagnóstico de Rede
+    * `[2]` Resetar Configurações TCP/IP
+    * `[3]` Flush DNS
+    * `[4]` Teste de Conectividade
+    * `[5]` Informações de Rede
+    * `[6]` Verificar Interfaces de Rede Ativas e Velocidade
+    * `[7]` Ativar/Desativar Firewall
+        * Verificar Status do Firewall
+        * Ativar/Desativar para Todos os Perfis
+        * Ativar por Perfil (Pública, Privada, Domínio)
+        * Restaurar Padrões do Firewall
 
-  * [cite\_start]**[2] Rede** [cite: 3]
+* **[3] Disco**
+    * `[1]` Informações do Disco
+    * `[2]` Desfragmentar Disco
 
-      * [cite\_start]`[1]` Diagnóstico de Rede [cite: 12]
-      * [cite\_start]`[2]` Resetar Configurações TCP/IP [cite: 13]
-      * [cite\_start]`[3]` Flush DNS [cite: 13]
-      * [cite\_start]`[4]` Teste de Conectividade [cite: 14]
-      * [cite\_start]`[5]` Informações de Rede [cite: 14]
-      * [cite\_start]`[6]` Verificar Interfaces de Rede Ativas e Velocidade [cite: 14]
-      * [cite\_start]`[7]` Ativar/Desativar Firewall [cite: 15]
-          * [cite\_start]Verificar Status do Firewall [cite: 19]
-          * [cite\_start]Ativar/Desativar para Todos os Perfis [cite: 19, 20]
-          * [cite\_start]Ativar por Perfil (Pública, Privada, Domínio) [cite: 20, 21]
-          * [cite\_start]Restaurar Padrões do Firewall [cite: 21]
+* **[4] Impressoras**
+    * `[1]` Listar Impressoras Instaladas
+    * `[2]` Verificar Status das Impressoras
+    * `[3]` Limpar Fila de Impressão
+    * `[4]` Reinstalar Drivers de Impressora
+    * `[5]` Configurações de Impressora
+    * `[6]` Testar Página de Teste
+    * `[7]` Corrigir Erro 0x0000011b
+    * `[8]` Corrigir Erro 0x00000bcb
+    * `[9]` Corrigir Erro 0x00000709
 
-  * [cite\_start]**[3] Disco** [cite: 4]
+* **[5] Limpeza**
+    * Limpeza de Disco (Disk Cleanup)
+    * Limpar Arquivos Temporários
+    * Limpar Cache do DNS
+    * Limpar Histórico do Navegador
+    * Esvaziar Lixeira
+    * Limpeza Completa do Sistema
 
-      * [cite\_start]`[1]` Informações do Disco [cite: 292]
-      * [cite\_start]`[2]` Desfragmentar Disco [cite: 293]
+* **[6] Utilitários**
+    * Editor do Registro (RegEdit)
+    * Configurações do Sistema (MSConfig)
+    * Monitor de Recursos
+    * Informações do Sistema (MSInfo32)
+    * Prompt de Comando como Admin
+    * PowerShell como Admin
 
-  * [cite\_start]**[4] Impressoras** [cite: 4]
+* **[7] Domínio**
+    * `[1]  Ingressar no Domínio (Iketani, Labsi, Premazon, Densimagen)`
+    * `[2]` Verificar Status do Domínio
+    * `[3]` Sair do Domínio
+    * `[4]` Informações do Computador
 
-      * [cite\_start]`[1]` Listar Impressoras Instaladas [cite: 84]
-      * [cite\_start]`[2]` Verificar Status das Impressoras [cite: 85]
-      * [cite\_start]`[3]` Limpar Fila de Impressão [cite: 85]
-      * [cite\_start]`[4]` Reinstalar Drivers de Impressora [cite: 85]
-      * [cite\_start]`[5]` Configurações de Impressora [cite: 86]
-      * [cite\_start]`[6]` Testar Página de Teste [cite: 86]
-      * [cite\_start]`[7]` Corrigir Erro 0x0000011b [cite: 87]
-      * [cite\_start]`[8]` Corrigir Erro 0x00000bcb [cite: 87]
-      * [cite\_start]`[9]` Corrigir Erro 0x00000709 [cite: 88]
+* **[8] Drivers**
+    * `[1]` Fazer Backup dos Drivers
+    * `[2]` Restaurar Drivers do Backup
+    * `[3]` Listar Drivers Instalados
+    * `[4]` Verificar Drivers sem Assinatura Digital
+    * `[5]` Atualizar Drivers via Windows Update
+    * `[6]` Exportar Lista de Drivers para Arquivo
 
-  * [cite\_start]**[5] Limpeza** [cite: 5]
+* **[9] Instalar Programas**
+    * Google Chrome
+    * Mozilla Firefox
+    * Adobe Reader
+    * Foxit Reader
+    * Google Drive
+    * LibreOffice
+    * CrystalDiskInfo
+    * CrystalDiskMark
+    * CPU-Z
+    * Instalar Todos
 
-      * [cite\_start]Limpeza de Disco (Disk Cleanup) [cite: 128]
-      * [cite\_start]Limpar Arquivos Temporários [cite: 129]
-      * [cite\_start]Limpar Cache do DNS [cite: 129]
-      * [cite\_start]Limpar Histórico do Navegador [cite: 130]
-      * [cite\_start]Esvaziar Lixeira [cite: 130]
-      * [cite\_start]Limpeza Completa do Sistema [cite: 130]
+* **[10] Ativar Windows e Office**
+    * `[1]` Abrir Ativador
+    * `[2]` Verificar Status de Ativação
 
-  * [cite\_start]**[6] Utilitários** [cite: 5]
-
-      * [cite\_start]Editor do Registro (RegEdit) [cite: 149]
-      * [cite\_start]Configurações do Sistema (MSConfig) [cite: 149]
-      * [cite\_start]Monitor de Recursos [cite: 150]
-      * [cite\_start]Informações do Sistema (MSInfo32) [cite: 150]
-      * [cite\_start]Prompt de Comando como Admin [cite: 151]
-      * [cite\_start]PowerShell como Admin [cite: 151]
-
-  * [cite\_start]**[7] Domínio** [cite: 6]
-
-      * [cite\_start]`[1]` Ingressar no Domínio (Iketani, Labsi, Premazon, Densimagen) [cite: 161, 168, 169, 170]
-      * [cite\_start]`[2]` Verificar Status do Domínio [cite: 162]
-      * [cite\_start]`[3]` Sair do Domínio [cite: 162]
-      * [cite\_start]`[4]` Informações do Computador [cite: 163]
-
-  * [cite\_start]**[8] Drivers** [cite: 6]
-
-      * [cite\_start]`[1]` Fazer Backup dos Drivers [cite: 191]
-      * [cite\_start]`[2]` Restaurar Drivers do Backup [cite: 192]
-      * [cite\_start]`[3]` Listar Drivers Instalados [cite: 192]
-      * [cite\_start]`[4]` Verificar Drivers sem Assinatura Digital [cite: 192]
-      * [cite\_start]`[5]` Atualizar Drivers via Windows Update [cite: 193]
-      * [cite\_start]`[6]` Exportar Lista de Drivers para Arquivo [cite: 193]
-
-  * [cite\_start]**[9] Instalar Programas** [cite: 7]
-
-      * [cite\_start]Google Chrome [cite: 230]
-      * [cite\_start]Mozilla Firefox [cite: 231]
-      * [cite\_start]Adobe Reader [cite: 231]
-      * [cite\_start]Foxit Reader [cite: 232]
-      * [cite\_start]Google Drive [cite: 233]
-      * [cite\_start]LibreOffice [cite: 233]
-      * [cite\_start]CrystalDiskInfo [cite: 234]
-      * [cite\_start]CrystalDiskMark [cite: 234]
-      * [cite\_start]CPU-Z [cite: 235]
-      * [cite\_start]Instalar Todos [cite: 235]
-
-  * [cite\_start]**[10] Ativar Windows e Office** [cite: 7]
-
-      * [cite\_start]`[1]` Abrir Ativador [cite: 273]
-      * [cite\_start]`[2]` Verificar Status de Ativação [cite: 273]
-
-\</details\>
-
+</details>
 ## ⚙️ Requisitos
 
   * **Sistema Operacional**: Windows 10 ou superior.
